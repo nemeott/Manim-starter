@@ -12,7 +12,7 @@ pkgs.mkShell {
     pkgs.stdenv.cc.cc.lib     # provides libstdc++.so.6
     nixglhost                 # bind to system driver (but ManimCE is CPU bound)
 
-    python3
+    python312
     uv
 
     pkg-config                # manim dependencies
@@ -38,11 +38,6 @@ pkgs.mkShell {
     echo "Python and uv are ready!"
     python --version
     uv --version
-
-    # enable nvidia GPU on homelab
-    export __NV_PRIME_RENDER_OFFLOAD=1 
-    export __GLX_VENDOR_LIBRARY_NAME=nvidia
-    export UV_CACHE_DIR=/home/yves/DEV/.uv_cache
 
     if [ ! -d .venv ]; then
       uv venv
